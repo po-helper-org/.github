@@ -20,8 +20,8 @@
 |---|---|
 | [poh-helper](https://github.com/po-helper-org/poh-helper) | AI-Native продуктовая операционка PO: multi-step пайплайны ИИ-агентов (OKR · Спринты · БФТ · Внешние запросы), онбординг PAF, методология Product Discovery |
 | [poh-issue-agents](https://github.com/po-helper-org/poh-issue-agents) | Self-hosted Issue Agent Service — полный цикл Issue как durable Temporal-workflow (webhook + worker, GLM via z.ai) |
-| [poh-pr-agent](https://github.com/po-helper-org/poh-pr-agent) | Готовый GitHub Actions конфиг: авто-CodeReview PR через PR-Agent (Qodo) + GLM |
-| [poh-dev-closer](https://github.com/po-helper-org/poh-dev-closer) | _(заготовка)_ |
+| [poh-pr-agents](https://github.com/po-helper-org/poh-pr-agents) | Готовый GitHub Actions конфиг: авто-CodeReview PR через PR-Agent (Qodo) + GLM |
+| [poh-pr-closer](https://github.com/po-helper-org/poh-pr-closer) | _(заготовка)_ |
 
 ## Принципы
 
