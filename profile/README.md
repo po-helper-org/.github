@@ -18,10 +18,10 @@
 
 | Репозиторий | Роль |
 |---|---|
-| [po-helper](https://github.com/po-helper-org/po-helper) | AI-Native продуктовая операционка PO: multi-step пайплайны ИИ-агентов (OKR · Спринты · БФТ · Внешние запросы), онбординг PAF, методология Product Discovery |
-| [gh-issue-agents](https://github.com/po-helper-org/gh-issue-agents) | Self-hosted Issue Agent Service — полный цикл Issue как durable Temporal-workflow (webhook + worker, GLM via z.ai) |
-| [pr-agent-glm-setup](https://github.com/po-helper-org/pr-agent-glm-setup) | Готовый GitHub Actions конфиг: авто-CodeReview PR через PR-Agent (Qodo) + GLM |
-| [po-helper-dev-closer](https://github.com/po-helper-org/po-helper-dev-closer) | _(заготовка)_ |
+| [poh-helper](https://github.com/po-helper-org/poh-helper) | AI-Native продуктовая операционка PO: multi-step пайплайны ИИ-агентов (OKR · Спринты · БФТ · Внешние запросы), онбординг PAF, методология Product Discovery |
+| [poh-issue-agents](https://github.com/po-helper-org/poh-issue-agents) | Self-hosted Issue Agent Service — полный цикл Issue как durable Temporal-workflow (webhook + worker, GLM via z.ai) |
+| [poh-pr-agent](https://github.com/po-helper-org/poh-pr-agent) | Готовый GitHub Actions конфиг: авто-CodeReview PR через PR-Agent (Qodo) + GLM |
+| [poh-dev-closer](https://github.com/po-helper-org/poh-dev-closer) | _(заготовка)_ |
 
 ## Принципы
 
