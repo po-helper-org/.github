@@ -66,10 +66,10 @@ adversarial-проверка → роадмап. Каждое утвержден
 | poh-strategy-agents | 1 | Абстрактная идея → доказуемая стратегия: контекст, проблема, ставки, pre-mortem, роадмап и OKR | срез 1, не опубликован |
 | [poh-bft-writer](https://github.com/po-helper-org/poh-bft-writer) | 2 | Эпик → корпоративный БФТ (формат МТС): проблема, концепты, дебаты, черновик, валидация | живой |
 | [poh-sprint-agents](https://github.com/po-helper-org/poh-sprint-agents) | 3 · 4 | Автономный скрам-мастер: декомпозиция и ёмкость, операционный контракт с исполнителями, план/факт по дейликам, факт спринта | срез 1 |
-| [poh-memory-engine](https://github.com/po-helper-org/poh-memory-engine) | 1 · 4 | Движок памяти Kortex: markdown → граф знаний + вектор по PAF; деривация связей, гейт материализации, детектор разрывов до хребта OKR | живой, приватный |
-| [poh-cortex](https://github.com/po-helper-org/poh-cortex) | — | Стратегия самой организации: vision, моат, модель ценности | документ, приватный |
-| [poh-po-task](https://github.com/po-helper-org/poh-po-task) | 4 | Личный планнер PO: обязательства и блокеры из дейликов → SMART-задачи, мост с Google Tasks | спецификация, приватный |
-| [poh-scheduller](https://github.com/po-helper-org/poh-scheduller) | 3 | Календарь: односторонний notification-safe синк корпоративного Exchange в Google | живой, приватный |
+| [poh-memory-engine](https://github.com/po-helper-org/poh-memory-engine) | 1 · 4 | Движок памяти Kortex: markdown → граф знаний + вектор по PAF; деривация связей, гейт материализации, детектор разрывов до хребта OKR | живой |
+| [poh-cortex](https://github.com/po-helper-org/poh-cortex) | — | Стратегия самой организации: vision, моат, модель ценности | документ |
+| [poh-po-task](https://github.com/po-helper-org/poh-po-task) | 4 | Личный планнер PO: обязательства и блокеры из дейликов → SMART-задачи, мост с Google Tasks | спецификация |
+| [poh-scheduller](https://github.com/po-helper-org/poh-scheduller) | 3 | Календарь: односторонний notification-safe синк корпоративного Exchange в Google | живой |
 | [poh-news](https://github.com/po-helper-org/poh-news) | 1 | Внешний контекст: новостной брифинг под интересы PO, фреймворк системного аналитика | живой |
 
 ## Контур производства
