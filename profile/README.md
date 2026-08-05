@@ -81,7 +81,7 @@ adversarial-проверка → роадмап. Каждое утвержден
 |---|---|---|
 | [poh-issue-agents](https://github.com/po-helper-org/poh-issue-agents) | Self-hosted Issue Agent Service: полный цикл Issue как durable Temporal-workflow | живой |
 | [poh-pr-agents](https://github.com/po-helper-org/poh-pr-agents) | GitHub Actions: авто-CodeReview PR через PR-Agent (Qodo) + GLM | живой |
-| [poh-pr-closer](https://github.com/po-helper-org/poh-pr-closer) | Закрытие цикла PR | заготовка |
+| [poh-pr-closer](https://github.com/po-helper-org/poh-pr-closer) | Закрытие цикла PR: доведение до результата после ревью, стоп-слово на зацикливании | реализован, вживую не прогонялся |
 | [poh-infra](https://github.com/po-helper-org/poh-infra) | Инфраструктура self-hosted моделей и оркестрации | заготовка, приватный |
 
 Три агентских сервиса контура не вызывают друг друга — они общаются через состояние GitHub.
