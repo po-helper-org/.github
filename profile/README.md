@@ -58,36 +58,57 @@ adversarial-проверка → роадмап. Каждое утвержден
 | Сигнал отклонения и его последствия для целей | Решение о сдвиге, переговоры с командами |
 | Форма артефакта, прослеживаемость каждого факта | Приоритет при конфликте целей |
 
-## Контур PO
+## Карта организации
 
-| Репозиторий | Функции | Что делает | Статус |
-|---|---|---|---|
-| [poh-helper](https://github.com/po-helper-org/poh-helper) | 1 · 2 · 3 · 4 | Продуктовая операционка единым runtime: OKR, БФТ, спринты, внешние запросы, дейлики, `release-guard` (обязательство и дрейф объёма), онбординг PAF | живой |
-| poh-strategy-agents | 1 | Абстрактная идея → доказуемая стратегия: контекст, проблема, ставки, pre-mortem | срез 1, не опубликован |
-| [poh-okr-agent](https://github.com/po-helper-org/poh-okr-agent) | 1 · 4 | Ставка → OKR, roadmap, верхнеуровневая декомпозиция, квартальный план-дек, экватор (статус+риски на середине квартала, `.md`+`.pptx`) | живой |
-| [poh-bft-writer](https://github.com/po-helper-org/poh-bft-writer) | 2 | Эпик → корпоративный БФТ (формат МТС): проблема, концепты, дебаты, черновик, валидация | живой |
-| [poh-sprint-agents](https://github.com/po-helper-org/poh-sprint-agents) | 3 · 4 | Автономный скрам-мастер: декомпозиция и ёмкость, операционный контракт с исполнителями, план/факт по дейликам, факт спринта | срез 1 |
-| [poh-memory-engine](https://github.com/po-helper-org/poh-memory-engine) | 1 · 4 | Движок памяти Kortex: markdown → граф знаний + вектор по PAF; деривация связей, гейт материализации, детектор разрывов до хребта OKR | живой |
-| [poh-cortex](https://github.com/po-helper-org/poh-cortex) | — | Стратегия самой организации: vision, моат, модель ценности | документ |
-| [poh-po-task](https://github.com/po-helper-org/poh-po-task) | 4 | Личный планнер PO: обязательства и блокеры из дейликов → SMART-задачи, мост с Google Tasks | спецификация |
-| [poh-scheduller](https://github.com/po-helper-org/poh-scheduller) | 3 | Календарь: односторонний notification-safe синк корпоративного Exchange в Google | живой |
-| [poh-news](https://github.com/po-helper-org/poh-news) | 1 | Внешний контекст: новостной брифинг под интересы PO, фреймворк системного аналитика | живой |
+Организация — это пять групп. Репозиторий, который не служит ни одной из них, — под вопросом; такие переводятся в архив (раздел «Архив» ниже).
 
-## Контур производства
+### 1. Методология
 
-Чем организация строит саму себя. Прямо PO-функций не закрывает — обеспечивает
-надёжность, с которой они исполняются.
+| Репозиторий | Что это |
+|---|---|
+| [docs](https://github.com/po-helper-org/docs) · [сайт](https://po-helper-org.github.io/docs/) | Сайт методологии: **PAF Product Ops для корпоративного PO** (теория, Playbook, девять шагов, приложения, практика в организации), AI-Native Discovery, Трансформация PAF |
+| [poh-cortex](https://github.com/po-helper-org/poh-cortex) | Кортекс: память организации для ИИ-агентов PO — схема правил как данные, лестница доказательств, гейты, утилита `cortex` |
+| [research-as-investment](https://github.com/po-helper-org/research-as-investment) | Исследование идей как инвестиция: ценность информации, шкала доказательств E0–E6 |
+| [po-agent](https://github.com/po-helper-org/po-agent) | Консультант PO по управленческим решениям (Senior/Lead) |
+
+### 2. Навыки и агенты PO (контур PO)
+
+| Репозиторий | Функции | Что делает |
+|---|---|---|
+| [poh-okr-agent](https://github.com/po-helper-org/poh-okr-agent) | 1 · 4 | Ретро → OKR → roadmap → декомпозиция → квартальный план → экватор (`.md` + `.pptx`) |
+| [poh-bft-writer](https://github.com/po-helper-org/poh-bft-writer) | 2 | Эпик → корпоративный БФТ: проблема, концепты, дебаты, черновик, валидация |
+| [poh-sprint-agents](https://github.com/po-helper-org/poh-sprint-agents) | 3 · 4 | Скрам-мастер-агент: отчёт спринта, бизнес-колода, блокеры, инсайты |
+| [poh-backlog-skills](https://github.com/po-helper-org/poh-backlog-skills) | 3 · 4 | Гигиена беклога: правила как данные, вердикты, план действий |
+| [poh-morning-status](https://github.com/po-helper-org/poh-morning-status) | 4 | Утренний бриф PO: детерминированный сбор снимка, отчёт |
+| [poh-dev-daily](https://github.com/po-helper-org/poh-dev-daily) | 3 | Дейлик разработчика через агента |
+| [poh-sysreq-agent](https://github.com/po-helper-org/poh-sysreq-agent) | 2 | Агент системного аналитика: системные требования |
+| [poh-memory-engine](https://github.com/po-helper-org/poh-memory-engine) | 1 · 4 | Движок памяти: Markdown → граф знаний + вектор по PAF |
+| [poh-okr-plugin](https://github.com/po-helper-org/poh-okr-plugin) | 1 · 4 | Раздел «Управление целями» для DeepSeek Harness (расширение платформы, см. «Контур производства») |
+
+### 3. Контур производства
+
+Чем организация строит саму себя: надёжность, с которой исполняются функции. Агенты не вызывают друг друга — они общаются через состояние GitHub ([протокол](https://github.com/po-helper-org/.github/blob/main/AGENT-PROTOCOL.md)). Стадии разработки и релиза в текущей сборке «Коробки БФТ» вынесены за скобки.
 
 | Репозиторий | Что делает | Статус |
 |---|---|---|
-| [poh-issue-agents](https://github.com/po-helper-org/poh-issue-agents) | Self-hosted Issue Agent Service: полный цикл Issue как durable Temporal-workflow | живой |
-| [poh-pr-agents](https://github.com/po-helper-org/poh-pr-agents) | GitHub Actions: авто-CodeReview PR через PR-Agent (Qodo) + GLM | живой |
-| [poh-pr-closer](https://github.com/po-helper-org/poh-pr-closer) | Закрытие цикла PR: доведение до результата после ревью, стоп-слово на зацикливании | реализован, вживую не прогонялся |
-| [poh-infra](https://github.com/po-helper-org/poh-infra) | Инфраструктура self-hosted моделей и оркестрации | заготовка, приватный |
+| [poh-issue-agents](https://github.com/po-helper-org/poh-issue-agents) | Жизненный цикл Issue как Temporal-workflow; «Коробка БФТ» | развивается |
+| [poh-howtodemo-agent](https://github.com/po-helper-org/poh-howtodemo-agent) | Приёмка по сценарию HowToDemo, вердикт кодом | прототип |
+| [poh-pr-agents](https://github.com/po-helper-org/poh-pr-agents) | Авто-ревью PR: PR-Agent + GLM в GitHub Actions | поддерживается |
+| [poh-delivery-agent](https://github.com/po-helper-org/poh-delivery-agent) · [poh-developer-agents](https://github.com/po-helper-org/poh-developer-agents) · [poh-pr-closer](https://github.com/po-helper-org/poh-pr-closer) · [poh-security-agent](https://github.com/po-helper-org/poh-security-agent) | Стадии релиза, разработки, доведения PR, аудита безопасности | заморожены, кандидаты в архив |
+| [poh-demo-checkout](https://github.com/po-helper-org/poh-demo-checkout) | Демонстрационный сервис — полигон контура | фикстура |
+| [poh-harness](https://github.com/po-helper-org/poh-harness) · [poh-infra](https://github.com/po-helper-org/poh-infra) | Дистрибутив DeepSeek Harness; инфраструктура контура | поддерживаются |
 
-Три агентских сервиса контура не вызывают друг друга — они общаются через состояние GitHub.
-Что именно является контрактом, кто чем владеет и где проходит граница с разработчиком:
-[Протокол взаимодействия агентов](https://github.com/po-helper-org/.github/blob/main/AGENT-PROTOCOL.md).
+### 4. Серверный контур PO (приватные репозитории)
+
+Рабочие системы PO на своём сервере: виджеты Element (Инбокс, доска задач агентов, Jira, почта, календарь, лента, созвоны, отчёты спринтов, менеджер виджетов, коннекторы мессенджеров), мост к агентам Hermes (`poh-hermes-bridge`), мосты каналов связи (`comunager-hub`), корпоративный браузер (`corp-link`), почта (`poh-mail-core`), поддержка клиентов (`poh-support-desk`), наблюдаемость (`poh-observability`), инфраструктура сервера (`hermes-home-server`), чат ИИ-агента отчёта спринта (`poh-sprint-agent`), день PO (`poh-po-day`). Описание практик — в разделе [«Практика в организации»](https://po-helper-org.github.io/docs/paf-product-ops/practice/) сайта.
+
+### 5. Архив
+
+Заменены и не используются: `poh-helper` (монолит-предшественник), `poh-news`, `poh-feed-poc`, `poh-po-task`, `poh-mob-commands`, `mts-vpn`, `sprint-gds`, `sprint-registry`, `poh-scheduller-archive-private`, `poh-focus-mode-plugin`, `dsh-communication-plugin`. Репозитории не удалены: история доступна только для чтения.
+
+## Видимость
+
+Методология, навыки и открытые инструменты — публичные. Серверный контур с корпоративными интеграциями — приватный. Перед любым переводом приватного репозитория в публичный выполняется очистка от корпоративных идентификаторов, имён и адресов.
 
 ## Принципы
 
