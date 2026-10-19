@@ -104,7 +104,7 @@ adversarial-проверка → роадмап. Каждое утвержден
 
 ### 5. Архив
 
-Заменены и не используются: `poh-helper` (монолит-предшественник), `poh-news`, `poh-feed-poc`, `poh-po-task`, `poh-mob-commands`, `mts-vpn`, `sprint-gds`, `sprint-registry`, `poh-scheduller-archive-private`, `poh-focus-mode-plugin`, `dsh-communication-plugin`. Репозитории не удалены: история доступна только для чтения.
+Заменены и не используются: `poh-helper` (монолит-предшественник), `poh-news`, `poh-feed-poc`, `poh-po-task`, `poh-mob-commands`, `corp-vpn`, `sprint-team-a`, `sprint-registry`, `poh-scheduller-archive-private`, `poh-focus-mode-plugin`, `dsh-communication-plugin`. Репозитории не удалены: история доступна только для чтения.
 
 ## Видимость
 
