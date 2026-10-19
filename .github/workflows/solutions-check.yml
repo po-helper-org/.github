@@ -1,11 +1,47 @@
-# Напоминание о кейсе доработки в docs/solutions/ (не блокирует слияние).
-# Соглашение: https://github.com/po-helper-org/.github/blob/main/SOLUTIONS.md
+# Мягкая проверка соглашения SOLUTIONS.md: PR меняет код, а кейса в docs/solutions/ нет
+# и нет строки «Кейс: не нужен» → одно напоминание в PR. Слияние не блокирует никогда.
 name: solutions-check
+
 on:
-  pull_request:
-    types: [opened, edited, synchronize, reopened]
-permissions:
-  pull-requests: write
+  workflow_call:
+
 jobs:
   check:
-    uses: po-helper-org/.github/.github/workflows/solutions-check.yml@main
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Есть ли кейс
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set -u
+          files=$(gh api "repos/$REPO/pulls/$PR/files" --paginate --jq '.[].filename') || exit 0
+          code=$(printf '%s\n' "$files" | grep -Ev '^docs/|\.md$|^$' | head -1)
+          case_file=$(printf '%s\n' "$files" | grep -E '^docs/solutions/.+\.md$' | grep -v '/README\.md$' | head -1)
+          optout=$(printf '%s' "$BODY" | grep -E '(Кейс|кейс):[[:space:]]*(не|Не) нужен' | head -1)
+          marker='<!-- solutions-check -->'
+          old=$(gh api "repos/$REPO/issues/$PR/comments" --paginate \
+                --jq ".[] | select(.body | startswith(\"$marker\")) | .id" | head -1)
+
+          if [ -n "$code" ] && [ -z "$case_file" ] && [ -z "$optout" ]; then
+            msg="$marker
+          📒 **Кейс доработки не найден.** Если PR чинит ошибку или добавляет возможность — добавьте
+          \`docs/solutions/<дата>-<кейс>.md\` (ситуация → причина → решение → как проверить),
+          см. [соглашение](https://github.com/po-helper-org/.github/blob/main/SOLUTIONS.md).
+          Кейс не нужен — допишите в описание PR строку \`Кейс: не нужен — <почему>\`. Слияние это не блокирует."
+            echo "::warning::Нет кейса в docs/solutions/ — см. SOLUTIONS.md"
+          else
+            msg="$marker
+          ✅ Кейс доработки: ${case_file:-не требуется}."
+          fi
+          if [ -n "$old" ]; then
+            gh api -X PATCH "repos/$REPO/issues/comments/$old" -f body="$msg" >/dev/null || true
+          elif [ -n "$code" ] && [ -z "$case_file" ] && [ -z "$optout" ]; then
+            gh api "repos/$REPO/issues/$PR/comments" -f body="$msg" >/dev/null || true
+          fi
+          printf '%s\n' "$msg" | tail -n +2 >> "$GITHUB_STEP_SUMMARY"
+          exit 0
