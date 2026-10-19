@@ -1,0 +1,12 @@
+# Напоминание о кейсе доработки и в самом .github. Вызывает общий workflow этого же репо.
+# Сам общий workflow (solutions-check.yml) — только workflow_call: другие репо зовут его по пути
+# po-helper-org/.github/.github/workflows/solutions-check.yml@main, поэтому подменять его вызовом нельзя.
+name: solutions-check
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+permissions:
+  pull-requests: write
+jobs:
+  check:
+    uses: ./.github/workflows/solutions-check.yml
