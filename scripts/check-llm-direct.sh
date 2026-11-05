@@ -98,6 +98,8 @@ for f in "${FILES[@]}"; do
   [ -f "$f" ] || continue
   # не проверять сам скрипт (в его комментариях перечислены хосты провайдеров)
   [ "$(cd "$(dirname "$f")" && pwd)/$(basename "$f")" = "$SELF_PATH" ] && continue
+  # не проверять allowlist: причины в нём упоминают хосты провайдеров текстом
+  [ "$f" = "$ALLOW_FILE" ] && continue
   # номера строк с inline-маркером (содержимое — для standalone-проверки)
   markers=$(grep -nF 'llm-direct: allow' "$f" 2>/dev/null | tr '\n' ' ')
   hits=$(grep -nE "$HOST_RE" "${EXCLUDES[@]}" "$f" 2>/dev/null)
