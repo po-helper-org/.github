@@ -3,7 +3,7 @@
 name: llm-direct-selftest
 
 on:
-  push: { branches: [main] }
+  push:
   pull_request:
 
 permissions:
