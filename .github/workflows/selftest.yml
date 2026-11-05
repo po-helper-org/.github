@@ -1,0 +1,43 @@
+# Самопроверка канонического check-llm-direct.sh: зелёный прогон на чистом дереве
+# + красный на тестовом нарушении (временный файл в отдельном git-репозитории).
+name: llm-direct-selftest
+
+on:
+  push: { branches: [main] }
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Скрипт синтаксически цел
+        run: bash -n scripts/check-llm-direct.sh
+      - name: Чистое дерево — зелёный
+        run: scripts/check-llm-direct.sh
+      - name: Тестовое нарушение — красный
+        env:
+          TMPDIR: ${{ runner.temp }}
+        run: |
+          set -e
+          D="$(mktemp -d)"
+          git -C "$D" init -q 2>/dev/null || git init -q "$D"
+          cp scripts/check-llm-direct.sh "$D/"
+          cat > "$D/bad.py" <<'EOF'
+          from openai import OpenAI
+          client = OpenAI(base_url="https://api.z.ai/api/coding/paas/v4")
+          EOF
+          git -C "$D" add bad.py
+          git -C "$D" -c user.email=t@t -c user.email=t@t -c user.name=t commit -qm bad
+          set +e
+          bash "$D/check-llm-direct.sh"
+          rc=$?
+          set -e
+          if [ "$rc" -eq 1 ]; then
+            echo "OK: нарушение поймано (exit 1)"
+          else
+            echo "FAIL: скрипт должен упасть на прямом вызове, exit=$rc"; exit 1
+          fi
